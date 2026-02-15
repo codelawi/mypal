@@ -1,50 +1,117 @@
-# Welcome to your Expo app 👋
+# MyPal 📱💰
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+MyPal is a modern mobile application built with Expo and React Native that helps you manage and calculate your personal wallet throughout the month until you receive your salary.
 
-## Get started
+The app provides a clear overview of your balance, spending, and financial activity using interactive charts and a modern, clean design.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## ✨ Features
 
-2. Start the app
+### 💳 Wallet Management
 
-   ```bash
-   npx expo start
-   ```
+- Add your monthly salary
+- Track your current balance
+- Automatically calculate remaining money
+- Track daily and monthly expenses
 
-In the output, you'll find options to open the app in a
+### 📊 Charts and Analytics
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Visual chart showing spending vs remaining balance
+- Monthly financial overview
+- Easy-to-read graphical data
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 🎨 Modern and Professional UI
 
-## Get a fresh project
+- Clean and minimal design
+- Collapsible sections for better organization
+- Smooth animations
+- Beautiful dashboard layout
 
-When you're ready, run:
+### 📅 Monthly Tracking
+
+- Track your wallet from salary date to next salary date
+- Automatic monthly cycle reset
+
+### ⚡ Performance
+
+- Fast and responsive
+- Built with Expo and React Native
+- Works on Android and iOS
+
+---
+
+## 🧱 Tech Stack
+
+- Expo
+- React Native
+- JavaScript
+- Expo Router
+- Chart libraries
+- Modern UI components
+
+---
+
+## 📂 Project Structure
+
+# MyPal 📱💰
+
+MyPal is a modern mobile application built with Expo and React Native that helps you manage and calculate your personal wallet throughout the month until you receive your salary.
+
+The app provides a clear overview of your balance, spending, and financial activity using interactive charts and a modern, clean design.
+
+---
+
+## ✨ Features
+
+### 💳 Wallet Management
+
+- Add your monthly salary
+- Track your current balance
+- Automatically calculate remaining money
+- Track daily and monthly expenses
+
+### 📊 Charts and Analytics
+
+- Visual chart showing spending vs remaining balance
+- Monthly financial overview
+- Easy-to-read graphical data
+
+### 🎨 Modern and Professional UI
+
+- Clean and minimal design
+- Collapsible sections for better organization
+- Smooth animations
+- Beautiful dashboard layout
+
+### 📅 Monthly Tracking
+
+- Track your wallet from salary date to next salary date
+- Automatic monthly cycle reset
+
+### ⚡ Performance
+
+- Fast and responsive
+- Built with Expo and React Native
+- Works on Android and iOS
+
+---
+
+## 🧱 Tech Stack
+
+- Expo
+- React Native
+- Typescript
+- Expo Router
+- Chart libraries
+- Modern UI components
+
+---
+
+## 🚀 Getting Started
+
+Install dependencies:
 
 ```bash
-npm run reset-project
+npm install
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

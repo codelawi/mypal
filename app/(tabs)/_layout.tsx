@@ -1,33 +1,57 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import { ChartBar, History, Home } from "lucide-react-native";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        tabBarActiveTintColor: "#2563eb",
+        tabBarInactiveTintColor: "#9ca3af",
+        tabBarStyle: {
+          height: 60,
+          paddingBottom: 6,
+        },
+
+        // Tabs animation
+        animation: "fade",
+        transitionSpec: {
+          animation: "timing",
+          config: {
+            duration: 100,
+          },
+        },
+
+        // Keyboard handler
+        tabBarHideOnKeyboard: true,
+        lazy: true,
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
         }}
       />
+
       <Tabs.Screen
-        name="explore"
+        name="recent"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Recent",
+          tabBarIcon: ({ color, size }) => (
+            <History size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="chart"
+        options={{
+          title: "Chart",
+          tabBarIcon: ({ color, size }) => (
+            <ChartBar size={size} color={color} />
+          ),
         }}
       />
     </Tabs>
