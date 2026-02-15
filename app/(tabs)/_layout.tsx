@@ -14,13 +14,13 @@ export default function TabsLayout() {
         },
 
         // Tabs animation
-        animation: "fade",
-        transitionSpec: {
-          animation: "timing",
-          config: {
-            duration: 100,
-          },
-        },
+        // animation: "fade",
+        // transitionSpec: {
+        //   animation: "timing",
+        //   config: {
+        //     duration: 100,
+        //   },
+        // },
 
         // Keyboard handler
         tabBarHideOnKeyboard: true,
