@@ -1,7 +1,11 @@
 import { getTypes, transformsTable } from "@/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const useDatabase = (): { insert: (data: transformsTable) => Promise<any>; get: (data: getTypes) => Promise<any> } => {
+export const useDatabase = (): {
+  insert: (data: transformsTable) => Promise<any>;
+  get: (data: getTypes) => Promise<any>;
+  clear: () => Promise<any>;
+} => {
   const TransformsTableKey = "Trans";
 
   // generate random key
@@ -79,8 +83,26 @@ export const useDatabase = (): { insert: (data: transformsTable) => Promise<any>
     }
   };
 
+  const clear = async () => {
+    try {
+      await AsyncStorage.clear();
+      return {
+        status: 200,
+        message: "Data cleared successfully",
+        error: null,
+      };
+    } catch (e) {
+      return {
+        status: 500,
+        message: "Something went wrong",
+        error: e,
+      };
+    }
+  };
+
   return {
     insert,
     get,
+    clear,
   };
 };

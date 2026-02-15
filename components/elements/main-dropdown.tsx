@@ -1,21 +1,25 @@
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Text } from "@/components/ui/text";
 import {
-    BanknoteArrowDown,
-    BanknoteArrowUp,
-    Ellipsis,
+  BanknoteArrowDown,
+  BanknoteArrowUp,
+  Ellipsis,
+  Trash2,
 } from "lucide-react-native";
 import { Pressable } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+import { useDatabase } from "@/hooks/use-database";
+import { toast } from "sonner-native";
 
 export function MainDropDown() {
   const insets = useSafeAreaInsets();
@@ -24,6 +28,21 @@ export function MainDropDown() {
     bottom: insets.bottom,
     left: 4,
     right: 4,
+  };
+
+  const { insert, clear } = useDatabase();
+
+  const insertAction = async () => {};
+
+  const clearData = async () => {
+    const response = await clear();
+    const { message, error, status } = response;
+
+    if (status !== 200 && error) {
+      toast.error(message);
+      return;
+    }
+    toast.success(message);
   };
 
   return (
@@ -50,6 +69,13 @@ export function MainDropDown() {
           <DropdownMenuItem>
             <BanknoteArrowDown color={"#dc2626"} size={15} />
             <Text className="text-red-600">Make a transformation</Text>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem onPress={clearData}>
+            <Trash2 color={"#dc2626"} size={15} />
+            <Text className="text-red-600">Clear data</Text>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
