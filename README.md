@@ -52,16 +52,6 @@ The app provides a clear overview of your balance, spending, and financial activ
 
 ---
 
-## 📂 Project Structure
-
-# MyPal 📱💰
-
-MyPal is a modern mobile application built with Expo and React Native that helps you manage and calculate your personal wallet throughout the month until you receive your salary.
-
-The app provides a clear overview of your balance, spending, and financial activity using interactive charts and a modern, clean design.
-
----
-
 ## ✨ Features
 
 ### 💳 Wallet Management
