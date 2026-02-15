@@ -1,8 +1,8 @@
 # MyPal 📱💰
 
 <div style="width : 100%; display : flex; justify-content : center;">
-<img src="./assets/images/screenshot.png" alt="MyPal Logo" width="200"  />
-<img src="./assets/images/screenshot.png" alt="MyPal Logo" width="200"  />
+<img src="./assets/images/screenshot.png" alt="MyPal Logo" width="200" style="border-radius:20px;" />
+<img src="./assets/images/screenshot2.png" alt="MyPal Logo" width="200" style="border-radius:20px;" />
 </div>
 
 MyPal is a modern mobile application built with Expo and React Native that helps you manage and calculate your personal wallet throughout the month until you receive your salary.
