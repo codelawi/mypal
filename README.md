@@ -45,7 +45,7 @@ The app provides a clear overview of your balance, spending, and financial activ
 
 - Expo
 - React Native
-- JavaScript
+- Typescript
 - Expo Router
 - Chart libraries
 - Modern UI components
