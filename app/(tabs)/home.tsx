@@ -10,7 +10,7 @@ import {
   BanknoteArrowUp,
 } from "lucide-react-native";
 import { useEffect, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import { toast } from "sonner-native";
 
 export default function home() {
@@ -19,6 +19,8 @@ export default function home() {
   const [balance, setBalance] = useState<any>(null);
   const [balanceLoading, setBalanceLoading] = useState<boolean>(true);
   const [recentLoading, setRecentLoading] = useState<boolean>(true);
+
+  const emptyImageSource = require("@/assets/pngs/empty-1.png");
 
   const fetchData = async () => {
     const recentsResponse = await get({ table: "Trans" });
@@ -98,71 +100,79 @@ export default function home() {
                 <Text className="text-blue-600 font-bold">See all</Text>
               </Button>
             </View>
+            {recents.length > 0 ? (
+              <>
+                {recents.slice(-4).map((rec: any, key: any) => {
+                  // If rec.value is a Reanimated shared value
+                  const type = rec?.value?.type;
+                  const content = rec?.value?.content;
+                  const amount = rec?.value?.amont;
+                  const date = rec?.value?.date;
+                  const time = rec?.value?.time;
 
-            {recents.slice(-4).map((rec: any, key: any) => {
-              // If rec.value is a Reanimated shared value
-              const type = rec?.value?.type;
-              const content = rec?.value?.content;
-              const amount = rec?.value?.amont;
-              const date = rec?.value?.date;
-              const time = rec?.value?.time;
-
-              if (type === "up") {
-                return (
-                  <View
-                    key={key}
-                    className="p-4 bg-green-600/10 rounded-3xl flex flex-row items-center justify-between"
-                  >
-                    <View className="flex flex-row items-center gap-x-4">
-                      <View className="bg-white p-2 rounded-full">
-                        <BanknoteArrowUp
-                          size={30}
-                          color={"green"}
-                          strokeWidth={1.5}
-                        />
-                      </View>
-                      <View>
-                        <Text className="font-med text-lg text-green-600">
-                          {content}
-                        </Text>
-                        <Text className="font-med text-sm text-green-600/70">
-                          {date} | {time}
+                  if (type === "up") {
+                    return (
+                      <View
+                        key={key}
+                        className="p-4 bg-green-600/10 rounded-3xl flex flex-row items-center justify-between"
+                      >
+                        <View className="flex flex-row items-center gap-x-4">
+                          <View className="bg-white p-2 rounded-full">
+                            <BanknoteArrowUp
+                              size={30}
+                              color={"green"}
+                              strokeWidth={1.5}
+                            />
+                          </View>
+                          <View>
+                            <Text className="font-med text-lg text-green-600">
+                              {content}
+                            </Text>
+                            <Text className="font-med text-sm text-green-600/70">
+                              {date} | {time}
+                            </Text>
+                          </View>
+                        </View>
+                        <Text className="text-lg text-green-600">
+                          + {amount} JOD
                         </Text>
                       </View>
-                    </View>
-                    <Text className="text-lg text-green-600">
-                      + {amount} JOD
-                    </Text>
-                  </View>
-                );
-              } else {
-                return (
-                  <View
-                    key={key}
-                    className="p-4 bg-red-600/10 rounded-3xl gap-y-10 flex flex-row items-center justify-between"
-                  >
-                    <View className="flex flex-row items-center gap-x-4">
-                      <View className="bg-white p-2 rounded-full">
-                        <BanknoteArrowDown
-                          size={30}
-                          color={"red"}
-                          strokeWidth={1.5}
-                        />
+                    );
+                  } else {
+                    return (
+                      <View
+                        key={key}
+                        className="p-4 bg-red-600/10 rounded-3xl gap-y-10 flex flex-row items-center justify-between"
+                      >
+                        <View className="flex flex-row items-center gap-x-4">
+                          <View className="bg-white p-2 rounded-full">
+                            <BanknoteArrowDown
+                              size={30}
+                              color={"red"}
+                              strokeWidth={1.5}
+                            />
+                          </View>
+                          <View>
+                            <Text className="font-med text-lg text-red-600">
+                              {content}
+                            </Text>
+                            <Text className="font-med text-sm text-red-600/70">
+                              10/2/2026 | 12:14 PM
+                            </Text>
+                          </View>
+                        </View>
+                        <Text className="text-lg text-red-600">- 40 JOD</Text>
                       </View>
-                      <View>
-                        <Text className="font-med text-lg text-red-600">
-                          {content}
-                        </Text>
-                        <Text className="font-med text-sm text-red-600/70">
-                          10/2/2026 | 12:14 PM
-                        </Text>
-                      </View>
-                    </View>
-                    <Text className="text-lg text-red-600">- 40 JOD</Text>
-                  </View>
-                );
-              }
-            })}
+                    );
+                  }
+                })}
+              </>
+            ) : (
+              <View className="mt-12 flex justify-center items-center">
+                <Image source={emptyImageSource} className="w-[200] h-[200]" />
+                <Text className="font-med text-md">Its empty here.</Text>
+              </View>
+            )}
           </>
         )}
       </View>
