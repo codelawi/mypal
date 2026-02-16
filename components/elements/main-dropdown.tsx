@@ -21,6 +21,10 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDatabase } from "@/hooks/use-database";
 import { toast } from "sonner-native";
 
+import { InsertBalanceContent } from "@/components/contents/insert-balance-content";
+import { useAlert } from "@/providers/alert-dialog-provider";
+import { useDialog } from "@/providers/dialog-provider";
+
 export function MainDropDown() {
   const insets = useSafeAreaInsets();
   const contentInsets = {
@@ -31,8 +35,26 @@ export function MainDropDown() {
   };
 
   const { insert, clear } = useDatabase();
+  const { open } = useDialog();
+  const { alert, confirm } = useAlert();
 
-  const insertAction = async () => {};
+  const insertAction = async () => {
+    open(<InsertBalanceContent />, "Insert an incoming balance");
+  };
+
+  const showClearDialog = async () => {
+    const confirmed = await confirm({
+      title: "Clear all data",
+      description:
+        "Are you sure you want to clear the month data? You will lose everything and you have to insert a new balance again.",
+      cancelText: "Keep it",
+      confirmText: "Yes, Delete it",
+      destructive: true,
+    });
+    if (confirmed) {
+      clearData();
+    }
+  };
 
   const clearData = async () => {
     const response = await clear();
@@ -61,7 +83,7 @@ export function MainDropDown() {
         <DropdownMenuLabel>Money actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem onPress={insertAction}>
             <BanknoteArrowUp color={"#16a34a"} size={15} />
             <Text className="text-green-600">Inseart a balance</Text>
             <DropdownMenuShortcut>JOD</DropdownMenuShortcut>
@@ -73,7 +95,7 @@ export function MainDropDown() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onPress={clearData}>
+          <DropdownMenuItem onPress={showClearDialog}>
             <Trash2 color={"#dc2626"} size={15} />
             <Text className="text-red-600">Clear data</Text>
           </DropdownMenuItem>

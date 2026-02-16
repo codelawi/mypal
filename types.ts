@@ -1,5 +1,5 @@
 export type transformsTable = {
-  id: string;
+  id?: string;
   content: string;
   type: "up" | "down";
   amont: number;
